@@ -773,3 +773,29 @@ Refresh(0);}else{RefrePP(0);}
 if (PaC != "") {Patt=Math.abs(Number(PaC)-1);button.click();}else{Patt=0;}
 
         }, 50);
+
+const toggleBtn = document.getElementById('toggleColorBtn');
+let toggled = false;
+
+toggleBtn.addEventListener('click', () => {
+  toggled = !toggled;
+
+
+  document.querySelectorAll('button').forEach(btn => {
+    if(toggled) {
+      btn.classList.add('button-white');
+    } else {
+      btn.classList.remove('button-white');
+    }
+  });
+
+
+  document.querySelectorAll('.map').forEach(mapEl => {
+    if(toggled) {
+      mapEl.classList.add('map-gray');
+    } else {
+      mapEl.classList.remove('map-gray');
+    }
+  });
+});
+
