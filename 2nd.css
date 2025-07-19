@@ -1,0 +1,42 @@
+body {
+  background-color: #1e1e1e;
+  color: #ccc;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 10px;
+}
+
+#toggleColorBtn {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  background-color: #444;
+  border: none;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  z-index: 1000;
+}
+
+#toggleColorBtn:hover {
+  background-color: #666;
+}
+
+/* Białe przyciski */
+.button-white {
+  background-color: #fff !important;
+  color: #333 !important;
+  border: 1px solid #ddd !important;
+}
+
+/* Szare mapy */
+.map-gray {
+  background-color: #555 !important;
+  color: #ddd !important;
+  /* jeśli są ramki, można dodać np: */
+  border: 1px solid #888 !important;
+  box-shadow: 0 0 8px rgba(150,150,150,0.5);
+}
