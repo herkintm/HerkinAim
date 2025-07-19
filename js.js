@@ -147,7 +147,7 @@ document.body.appendChild(patr);
 //patr.appendChild(linkText);
 //patr.title = "Patreon support";
 //patr.href = "https://www.patreon.com/ultrachess";
-patr.innerHTML = '<a id="patr" title="Patreon support" target="_blank" rel="noopener noreferrer" href="https://www.patreon.com/ultrachess" style="display: block; position: absolute; top: 95%; left: 20px;">Patreon support</a>'
+patr.innerHTML = '<a id="patr" title="Patreon support" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/@HerkinYo" style="display: block; position: absolute; top: 95%; left: 20px;">Youtube Channel</a>'
 
 var recordsB = document.createElement("BUTTON");
 recordsB.innerHTML = "RECORDS";
