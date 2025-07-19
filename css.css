@@ -2,40 +2,76 @@
 
 #slider {
   -webkit-appearance: none;
-   -moz-appearance: none;
-  width: 200px;
-  height: 10px;
-  border-radius: 5px;   
-  background: #fff;
+  appearance: none;
+  width: 220px;
+  height: 12px;
+  border-radius: 6px;
+  background: linear-gradient(90deg, #222 0%, #095f80 100%);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.18);
   outline: none;
-  opacity: 1;
-  -webkit-transition: .2s;
-   -moz-transition: .2s;
-   -o-transition: .2s;
-  transition: opacity .2s;
-  margin-top:5px;  
-  cursor: pointer !important;  
-
+  margin-top: 8px;
+  margin-bottom: 8px;
+  transition: box-shadow 0.2s;
 }
-
+#slider:focus {
+  box-shadow: 0 0 0 2px #095f80;
+}
 #slider::-webkit-slider-thumb {
   -webkit-appearance: none;
-  -moz-appearance: none;
   appearance: none;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%; 
-  background: #f460ff;
-  cursor: pointer !important;
-}
-
-#slider::-moz-range-thumb {
-  border: none;
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
-  background: #f460ff;
-  cursor: pointer !important;
+  background: linear-gradient(135deg, #ffe600 0%, #d00 100%);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.18);
+  border: 2px solid #095f80;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+#slider:active::-webkit-slider-thumb {
+  background: linear-gradient(135deg, #d00 0%, #ffe600 100%);
+  transform: scale(0.95);
+}
+#slider::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ffe600 0%, #d00 100%);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.18);
+  border: 2px solid #095f80;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+#slider:active::-moz-range-thumb {
+  background: linear-gradient(135deg, #d00 0%, #ffe600 100%);
+  transform: scale(0.95);
+}
+#slider::-ms-thumb {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ffe600 0%, #d00 100%);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.18);
+  border: 2px solid #095f80;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+#slider:active::-ms-thumb {
+  background: linear-gradient(135deg, #d00 0%, #ffe600 100%);
+  transform: scale(0.95);
+}
+#slider::-webkit-slider-runnable-track {
+  height: 12px;
+  border-radius: 6px;
+  background: linear-gradient(90deg, #222 0%, #095f80 100%);
+}
+#slider::-ms-fill-lower {
+  background: #222;
+  border-radius: 6px;
+}
+#slider::-ms-fill-upper {
+  background: #095f80;
+  border-radius: 6px;
 }
 
 body { margin: 0;
@@ -52,44 +88,41 @@ font-family: 'Allerta Stencil';
 #PressKey {
     font-family: "Comic Sans MS", cursive, sans-serif;
     font-family: 'Allerta Stencil';
-    color: #9e21a1 !important;
+    color: #000000 !important;
 }
 
-#switch {
-    background-color: #4CAF50;
-    Width: 200px;
-    outline:none;
-    font-family: 'Allerta Stencil';
-    font-size: 15px;
-    padding: 5px;
-    margin-top:5px;
-    margin-left:2px;
-    border: 2px solid #fff;
-    background: linear-gradient(to left,
-      #000 0% 25%, #fff 25% 75%, #000 75% 100%); 
-transition: all 1s;
-
+/* Modern button styles for game controls */
+#switch, #records, #toggleColorBtn {
+  background: linear-gradient(90deg, #222 0%, #095f80 100%);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-family: 'Allerta Stencil', Arial, sans-serif;
+  font-size: 18px;
+  padding: 10px 24px;
+  margin: 10px 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+  transition: background 0.3s, color 0.3s, box-shadow 0.2s, transform 0.1s;
+  cursor: pointer;
+  outline: none;
+  letter-spacing: 2px;
+  display: block;
+  width: 220px;
+  text-align: center;
 }
 
-#switch:hover {
-    color: white;
-    Width: 200px;
-    outline:none;
-    border: 2px solid #999;
-    background: linear-gradient(to left,
-      #fff 0% 25%, #000 25% 75%, #fff 75% 100%); 
-   transition: all 1s;
-    
+#switch:hover, #records:hover, #toggleColorBtn:hover {
+  background: linear-gradient(90deg, #095f80 0%, #222 100%);
+  color: #ffe600;
+  box-shadow: 0 4px 16px rgba(9,95,128,0.18);
+  transform: translateY(-2px) scale(1.04);
 }
 
-#switch:active {
-    color: #000;
-    Width: 200px;
-    outline:none;
-    border: 2px solid #8c8c8c;
-    background: linear-gradient(to left,
-      #fff 0% 25%, #fff 25% 75%, #fff 75% 100%); 
-    transition: all 1s;
+#switch:active, #records:active, #toggleColorBtn:active {
+  background: linear-gradient(90deg, #111 0%, #095f80 100%);
+  color: #fff;
+  box-shadow: 0 1px 4px rgba(9,95,128,0.12);
+  transform: scale(0.98);
 }
 
 #zom{font-family: 'Allerta Stencil';
@@ -99,40 +132,10 @@ transition: all 1s;
 #best{font-family: 'Allerta Stencil';}
 
 #records {
-    background-color: #4CAF50;
-    Width: 200px;
-    outline:none;
-    font-family: 'Allerta Stencil';
-    font-size: 15px;
-    padding: 5px;
-    margin-top:45px;
-    margin-left:2px;
-    border: 2px solid #fff;
-    background: linear-gradient(to left,
-      #000 0% 25%, #fff 25% 75%, #000 75% 100%); 
-transition: all 1s;
-
-}
-
-#records:hover {
-    color: white;
-    Width: 200px;
-    outline:none;
-    border: 2px solid #999;
-    background: linear-gradient(to left,
-      #fff 0% 25%, #000 25% 75%, #fff 75% 100%); 
-   transition: all 1s;
-    
-}
-
-#records:active {
-    color: #000;
-    Width: 200px;
-    outline:none;
-    border: 2px solid #8c8c8c;
-    background: linear-gradient(to left,
-      #fff 0% 25%, #fff 25% 75%, #fff 75% 100%); 
-    transition: all 1s;
+  background: none;
+  border: none;
+  margin-top: 250px;
+  margin-left: 0;
 }
 
 #patr{
@@ -147,4 +150,38 @@ transition: all 1s;
 
 #patr:hover{
     color: #0092ff;
+}
+
+#recordsLabel {
+  background: #222;
+  color: #ffe600;
+  border-radius: 12px;
+  font-family: 'Allerta Stencil', Arial, sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+  padding: 12px 0;
+  width: 320px;
+  text-align: center;
+  margin: 150px auto 35px auto;
+  letter-spacing: 3px;
+  box-shadow: 0 2px 8px rgba(9,95,128,0.18);
+  user-select: none;
+  pointer-events: none;
+}
+
+#listR {
+  background: #222;
+  color: #fff;
+  border: 3px solid #095f80;
+  border-radius: 20px;
+  font-family: 'Allerta Stencil', Arial, sans-serif;
+  font-size: 22px;
+  padding: 32px 24px 24px 24px;
+  margin: 15px auto 18px auto;
+  box-shadow: 0 4px 16px rgba(9,95,128,0.18);
+  width: 320px;
+  text-align: center;
+  letter-spacing: 2px;
+  user-select: text;
+  pointer-events: none;
 }
