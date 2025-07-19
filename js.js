@@ -132,22 +132,9 @@ button.id = "switch";
 button.style.display = "block";
 button.style.position='absolute';
 
-var patr = document.createElement("a");
-//patr.innerHTML = "Patreon";
-document.body.appendChild(patr);
-//patr.id = "patr";
-//patr.style.display = "block";
-//patr.style.position='absolute';
-//patr.style.top=420+"px";
-//patr.style.color="darkblue";
-//patr.style.left=20+"px";
-//var linkText = document.createTextNode("Patreon support");
-//var win = window.open('http://stackoverflow.com/', '_blank');
-//linkText.id="patrLink";
-//patr.appendChild(linkText);
-//patr.title = "Patreon support";
-//patr.href = "https://www.patreon.com/ultrachess";
-patr.innerHTML = '<a id="patr" title="Patreon support" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/@HerkinYo" style="display: block; position: absolute; top: 95%; left: 20px;">Youtube Channel</a>'
+var yt = document.createElement("a");
+document.body.appendChild(yt);
+yt.innerHTML = '<a id="patr" title="Youtbue Channel" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/@HerkinYo" style="display: block; position: absolute; top: 95%; left: 20px;">Youtube Channel</a>'
 
 var recordsB = document.createElement("BUTTON");
 recordsB.innerHTML = "RECORDS";
@@ -251,6 +238,9 @@ noErr=1;
 for (var i = 0; i < Pround; i++) {
 if (CPX==hopX[i] && CPY==hopY[i])
     {
+    // Play sound when clicking correct pattern tile
+    var audio = new Audio('hit.mp3');
+    audio.play();
     Pround--;
     hopX.splice(i, 1);
     hopY.splice(i, 1);
@@ -446,7 +436,7 @@ canvas.height = w;
 canvas.style.left=x0+"px";
 canvas.style.top=w/4+"px";
 context.lineWidth = 1;
-context.strokeStyle = '#F0B3FF';
+context.strokeStyle = '#095f80';
 context.beginPath();
 context.moveTo(0, 0);
 context.lineTo(w, 0);
@@ -553,48 +543,47 @@ contextB.fill();
 }
 
 function DrawSquares() {
-//console.log(horiAr[0],vertAr[0],horiAr[1],vertAr[1],horiAr[2],vertAr[2],CoX,CoY);
     CoX = Math.floor((cx-x0)/sqsize);
     CoY = Math.floor((cy-w/4)/sqsize);
 
-for (var i = 0; i < horiAr.length; i++) {
-    if (horiAr[i] == CoX && vertAr[i] == CoY)
-    {
-for (var y = 0; y < horiAr.length; y++) {
-if (i != y) {OtherTiles[n] = y; n++;}
-}
-        n=0;
-horT = horiAr[i];
-verT = vertAr[i];
-horiAr[i] = Math.floor(Math.random() * (4 - 1 + 1));
-vertAr[i] = Math.floor(Math.random() * (4 - 1 + 1));
-//console.log(OtherTiles);
-while ((horiAr[i] == horiAr[OtherTiles[0]] && vertAr[i] == vertAr[OtherTiles[0]]) ||
-       (horiAr[i] == horiAr[OtherTiles[1]] && vertAr[i] == vertAr[OtherTiles[1]]) ||
-       (horiAr[i] == horT && vertAr[i] == verT)) {
-horiAr[i] = Math.floor(Math.random() * (4 - 1 + 1));
-vertAr[i] = Math.floor(Math.random() * (4 - 1 + 1));
-}
-contextB.clearRect(0, 0, canvasB.width, canvasB.height);
-contextB.beginPath();
-contextB.rect(horiAr[0]*sqsize,vertAr[0]*sqsize,sqsize,sqsize);
-contextB.rect(horiAr[1]*sqsize,vertAr[1]*sqsize,sqsize,sqsize);
-contextB.rect(horiAr[2]*sqsize,vertAr[2]*sqsize,sqsize,sqsize);
-contextB.fillStyle = 'black';
-contextB.closePath();
-contextB.fill();
-    //doit = 0;
-       // console.log(Bonus,"1");
-        if (Bonus<92){
-        Bonus = Bonus+8;}
-        else
-        {Bonus=100;}
-       // console.log(Bonus,"2");
-        CalculateScore();
-        good=1;
-        break;
-}
-}
+    for (var i = 0; i < horiAr.length; i++) {
+        if (horiAr[i] == CoX && vertAr[i] == CoY)
+        {
+            // Play sound only when clicking a black square
+            var audio = new Audio('hit.mp3');
+            audio.play();
+            for (var y = 0; y < horiAr.length; y++) {
+                if (i != y) {OtherTiles[n] = y; n++;}
+            }
+            n=0;
+            horT = horiAr[i];
+            verT = vertAr[i];
+            horiAr[i] = Math.floor(Math.random() * (4 - 1 + 1));
+            vertAr[i] = Math.floor(Math.random() * (4 - 1 + 1));
+            while ((horiAr[i] == horiAr[OtherTiles[0]] && vertAr[i] == vertAr[OtherTiles[0]]) ||
+                   (horiAr[i] == horiAr[OtherTiles[1]] && vertAr[i] == vertAr[OtherTiles[1]]) ||
+                   (horiAr[i] == horT && vertAr[i] == verT)) {
+                horiAr[i] = Math.floor(Math.random() * (4 - 1 + 1));
+                vertAr[i] = Math.floor(Math.random() * (4 - 1 + 1));
+            }
+            contextB.clearRect(0, 0, canvasB.width, canvasB.height);
+            contextB.beginPath();
+            contextB.rect(horiAr[0]*sqsize,vertAr[0]*sqsize,sqsize,sqsize);
+            contextB.rect(horiAr[1]*sqsize,vertAr[1]*sqsize,sqsize,sqsize);
+            contextB.rect(horiAr[2]*sqsize,vertAr[2]*sqsize,sqsize,sqsize);
+            contextB.fillStyle = 'black';
+            contextB.closePath();
+            contextB.fill();
+            if (Bonus<92){
+                Bonus = Bonus+8;
+            } else {
+                Bonus=100;
+            }
+            CalculateScore();
+            good=1;
+            break;
+        }
+    }
 
       if (good==0) {
           Errr=1;
@@ -683,14 +672,14 @@ Score.style.position='center';
 Score.style.top=sqsize/4+"px";
 Score.style.zIndex=11;
 Score.style.pointerEvents='none';
-Score.style.color='purple';
+Score.style.color='black';
 Score.style.textAlign ="center";
 Score.style.fontSize=Math.round(sqsize/1.4)+'px';
 div.appendChild(Score);
 
 var Best = document.createElement("div");
 Best.id = "best";
-Best.innerHTML="HI-SCORE<br>-";
+Best.innerHTML = "HI-SCORE<br>-";
 Best.style.position='absolute';
 Best.style.left= "75%";
 //Score.style.left=Math.round(w/2.23)+"px";
@@ -698,10 +687,22 @@ Best.style.top=sqsize/3.6+"px";
 Best.style.zIndex=11;
 Best.style.marginTop="0px";
 Best.style.pointerEvents='none';
-Best.style.color='darkblue';
+Best.style.color='black';
 Best.style.textAlign ="center";
 Best.style.fontSize=Math.round(sqsize/5)+'px';
 div.appendChild(Best);
+
+// multiplayer info at the bottom left
+var multiDiv = document.createElement("div");
+multiDiv.id = "multiInfo";
+multiDiv.innerHTML = "multiplayer *";
+multiDiv.style.position = "absolute";
+multiDiv.style.left = "10px";
+multiDiv.style.bottom = "10px";
+multiDiv.style.color = "#d00";
+multiDiv.style.fontSize = "16px";
+multiDiv.style.zIndex = 12;
+div.appendChild(multiDiv);
 
 
 //Score.innerHTML="&nbsp;"+"0";
@@ -780,22 +781,21 @@ let toggled = false;
 toggleBtn.addEventListener('click', () => {
   toggled = !toggled;
 
-
-  document.querySelectorAll('button').forEach(btn => {
-    if(toggled) {
-      btn.classList.add('button-white');
-    } else {
-      btn.classList.remove('button-white');
+  if (toggled) {
+    document.body.style.backgroundColor = '#090b11ff'; // nowy ciemny niebieski
+    document.body.style.color = '#ccc';
+    var basisDiv = document.getElementById('basis');
+    if (basisDiv) {
+      basisDiv.style.backgroundColor = '#444'; // gray
     }
-  });
-
-
-  document.querySelectorAll('.map').forEach(mapEl => {
-    if(toggled) {
-      mapEl.classList.add('map-gray');
-    } else {
-      mapEl.classList.remove('map-gray');
+  } else {
+    document.body.style.backgroundColor = '#222'; // original dark
+    document.body.style.color = '#ccc';
+    var basisDiv = document.getElementById('basis');
+    if (basisDiv) {
+      basisDiv.style.backgroundColor = 'white'; // original white
     }
-  });
+  }
+  toggleBtn.blur();
 });
 
